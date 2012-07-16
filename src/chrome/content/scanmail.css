@@ -1,0 +1,8 @@
+.button {
+    opacity:0.6;
+    filter:alpha(opacity=60); /* IE Compatibility */
+}
+.button:hover {
+    opacity:1.0;
+    filter:alpha(opacity=100);
+}

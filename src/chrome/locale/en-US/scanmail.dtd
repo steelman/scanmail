@@ -1,0 +1,5 @@
+<!ENTITY scanmail.getqrcode.label "Get QR code">
+<!ENTITY scanmail.encoding.label "Encoding">
+<!ENTITY scanmail.utf8-encoding.label "Use UTF-8 encoding">
+<!ENTITY scanmail.protocols.label "Protocols">
+<!ENTITY scanmail.mailto-protocol.label "Enable 'mailto' protocol support">

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- 
+Scan'Mail 
+version 0.1 (2011/05)
+Author : Nassim KACHA <nassim.kacha@blueicefield.com>
+License : GNU AFFERO GENERAL PUBLIC LICENSE Version 3
+--> 
+<!DOCTYPE mydialog SYSTEM "chrome://scanmail/locale/scanmail.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<prefwindow
+     title="Scan'Mail preferences" 
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<prefpane label="Encodage preferences">
+		<preferences>
+			<preference id="utf8-encoding" name="extensions.scanmail.utf8-encoding" type="bool"/>
+			<preference id="mailto-protocol" name="extensions.scanmail.mailto-protocol" type="bool"/>
+		</preferences>
+		<groupbox>
+			<caption label="&scanmail.encoding.label;"/>
+			<checkbox id="utf8" label="&scanmail.utf8-encoding.label;" preference="utf8-encoding"/>
+		</groupbox>
+		<groupbox>
+			<caption label="&scanmail.protocols.label;"/>
+			<checkbox id="mailto" label="&scanmail.mailto-protocol.label;" preference="mailto-protocol"/>
+		</groupbox>
+	</prefpane>
+</prefwindow>

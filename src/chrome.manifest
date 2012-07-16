@@ -1,0 +1,9 @@
+content     scanmail    chrome/content/
+
+locale scanmail en-US  chrome/locale/en-US/
+locale scanmail es-ES  chrome/locale/es-ES/
+locale scanmail fr-FR  chrome/locale/fr-FR/
+locale scanmail it-IT  chrome/locale/it-IT/
+
+overlay		chrome://messenger/content/messenger.xul	chrome://scanmail/content/overlay-mailContext.xul
+overlay		chrome://messenger/content/messenger.xul	chrome://scanmail/content/overlay-emailAddressPopup.xul

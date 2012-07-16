@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Scan'Mail 
+version 0.1 (2011/05)
+Author : Nassim KACHA <nassim.kacha@blueicefield.com>
+License : GNU AFFERO GENERAL PUBLIC LICENSE Version 3
+--> 
+	<!DOCTYPE overlay SYSTEM "chrome://scanmail/locale/scanmail.dtd">
+	<overlay id="overlay-emailAddressPopup" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script type="application/x-javascript" src="overlay-emailAddressPopup.js"/>
+		<popup id="emailAddressPopup" position="after_start" class="emailAddressPopup"
+		onpopupshowing="display(); setupEmailAddressPopup(findEmailNodeFromPopupNode(document.popupNode, 'emailAddressPopup')); goUpdateCommand('cmd_createFilterFromPopup');"
+		onpopuphiding="hideEmailNewsPopup(findEmailNodeFromPopupNode(document.popupNode, 'emailAddressPopup'));">
+			<menuseparator id="scanmail-menuseparator" hidden="true"/>
+			<menuitem id="scanmail-emailAddressPopup" label="&scanmail.getqrcode.label;" hidden="true"
+			oncommand="window.openDialog('chrome://scanmail/content/qrcode.xul', '', '', findEmailNodeFromPopupNode(document.popupNode, 'emailAddressPopup').getAttribute('emailAddress'))"/>
+		</popup>
+	</overlay>
+	
