@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
 Scan'Mail 
-version 0.1 (2011/05)
-Author : Nassim KACHA <nassim.kacha@blueicefield.com>
-License : GNU AFFERO GENERAL PUBLIC LICENSE Version 3
+@version 2.0 (2012/07)
+@author : Nassim KACHA <nassim.kacha@blueicefield.com>
+@license : LICENSE MIT
 --> 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://scanmail/content/scanmail.css" type="text/css"?>
-<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml" sizemode="normal" title="Scan'Mail" id="scanmail" pack="center" width="200" height="280" onload="Scanmail.displayQRCode(window.arguments[0].toString());">
-	<script type="application/javascript" src="chrome://scanmail/content/qrcode.js"/>
-	<script type="application/javascript" src="chrome://scanmail/content/scanmail.js"/>
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml" 
+sizemode="normal" title="Scan'Mail" id="scanmail" pack="center" width="200" height="280" 
+onload="Scanmail.displayQRCode(window.arguments[0].toString());">
+	<script type="application/javascript" src="chrome://scanmail/content/qrcode.js" />
+	<script type="application/javascript" src="chrome://scanmail/content/scanmail.js" />
 	<html:div id="qrcode" name="qrcode">
 	</html:div>
 	<html:div style="text-align: center;">

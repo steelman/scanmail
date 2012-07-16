@@ -1,8 +1,8 @@
-/* Scan'Mail 
- * version 0.1 (2011/05)
- * Author : Nassim KACHA <nassim.kacha@blueicefield.com>
- * License : GNU AFFERO GENERAL PUBLIC LICENSE
- *                      Version 3
+/**
+ * Scan'Mail 
+ * @version 2.0 (2012/06)
+ * @author : Nassim KACHA <nassim.kacha@blueicefield.com>
+ * @license : LICENSE MIT
  */ 
 
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
 Scan'Mail 
-version 0.1 (2011/05)
-Author : Nassim KACHA <nassim.kacha@blueicefield.com>
-License : GNU AFFERO GENERAL PUBLIC LICENSE Version 3
---> 
+@version 2.0 (2012/07)
+@author : Nassim KACHA <nassim.kacha@blueicefield.com>
+@license : LICENSE MIT
+-->  
 	<!DOCTYPE overlay SYSTEM "chrome://scanmail/locale/scanmail.dtd">
 	<overlay id="overlay-emailAddressPopup" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<script type="application/x-javascript" src="overlay-emailAddressPopup.js"/>

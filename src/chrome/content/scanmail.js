@@ -1,30 +1,27 @@
-/* Scan'Mail 
- * version 2.0 (2012/06)
- * Author : Nassim KACHA <nassim.kacha@blueicefield.com>
- * License : GNU AFFERO GENERAL PUBLIC LICENSE
- *                      Version 3
+/**
+ * Scan'Mail 
+ * @version 2.0 (2012/06)
+ * @author : Nassim KACHA <nassim.kacha@blueicefield.com>
+ * @license : LICENSE MIT
  */ 
 
-//http://www.phpied.com/3-ways-to-define-a-javascript-class/
-//http://www.crockford.com/javascript/private.html
-	
 var Scanmail = new function() {
 	
+	/**
+	 * Builds the QR code as a canvas
+	 * @param options	associative array
+	 * @returns 
+	 */
 	var qrCode = function(options){
-			// create the qrcode itself
 			var qrcode	= new QRCode(options.typeNumber, options.correctLevel);
 			qrcode.addData(options.text);
 			qrcode.make();
-			var canvas = document.createElementNS ("http://www.w3.org/1999/xhtml", 
-			"canvas");
+
+			var canvas = document.createElementNS ("http://www.w3.org/1999/xhtml", "canvas");
 			canvas.id = 'canvas';
 			canvas.className = 'canvas';
-			document.getElementById(options.node).insertBefore(canvas, null);
-			
 			canvas.width	= options.width;
 			canvas.height	= options.height;
-			Application.console.log('test');
-			Application.console.log(canvas);
 			
 			var ctx = canvas.getContext('2d');
 			
@@ -45,37 +42,56 @@ var Scanmail = new function() {
 			return canvas;
 	};
 	
-	var _isEmailAddress = function(string)
+	
+	/**
+	 * Checks if the string passed as parameter is an email
+	 * @param string
+	 * @returns true if the given parameter is an email address
+	 */
+	var isEmailAddress = function(string)
 	{
 		var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
 		return regex.test(string);
 	}; 
 	
+	
+	/**
+	 * Returns the settings
+	 * @returns settings as an associative array
+	 */
 	var getSettings = function()
 	{
 		var prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 		var use_mailto = prefManager.getBoolPref("extensions.scanmail.mailto-protocol");
 		return {'use_mailto': use_mailto};
 	};
+
 	
-	// Méthode publique
+	/** 
+	 * Display the QR Code 
+	 * @param content	Data to be inserted into the QR code
+	 */
 	this.displayQRCode = function(content)
 	{
 		var settings = getSettings();
-		if(settings.use_mailto && _isEmailAddress(content))
+		if(settings.use_mailto && isEmailAddress(content))
 		{
 			content = 'mailto:'+content;
 		}
-		qrCode({ width: 200,
-				 height: 200,
-				 node: 'qrcode',
-				 typeNumber	: -1,
-				 correctLevel : QRErrorCorrectLevel.H,
-				 background : "#ffffff",
-				 foreground : "#000000",
-				 text : content });
+		var canvas = qrCode({ width: 200,
+				 			  height: 200,
+				 			  typeNumber	: -1,
+				 			  correctLevel : QRErrorCorrectLevel.H,
+				 			  background : "#ffffff",
+				 			  foreground : "#000000",
+				 			  text : content });
+		document.getElementById('qrcode').insertBefore(canvas, null);
 	};
 	
+	
+	/**
+	 * Copy the QR code into the clipboard 
+	 */
 	this.copyToClipboard = function()
 	{
 		var canvas = document.getElementById("canvas");
