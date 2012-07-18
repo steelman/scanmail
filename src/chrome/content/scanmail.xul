@@ -15,7 +15,7 @@ onload="Scanmail.displayQRCode(window.arguments[0].toString());">
 	<html:div id="qrcode" name="qrcode">
 	</html:div>
 	<html:div style="text-align: center;">
-		<html:img class="button" src="chrome://scanmail/content/clipboard.png" onclick="Scanmail.copyToClipboard();"></html:img>
+		<html:img class="button" src="chrome://scanmail/content/img/clipboard.png" onclick="Scanmail.copyToClipboard();"></html:img>
 	</html:div>
 </window>
 
