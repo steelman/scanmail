@@ -9,10 +9,10 @@ Scan'Mail
 	<overlay id="overlay-emailAddressPopup" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<script type="application/x-javascript" src="overlay-emailAddressPopup.js"/>
 		<popup id="emailAddressPopup" position="after_start" class="emailAddressPopup"
-		onpopupshowing="display(); setupEmailAddressPopup(findEmailNodeFromPopupNode(document.popupNode, 'emailAddressPopup')); goUpdateCommand('cmd_createFilterFromPopup');"
+		onpopupshowing="setupEmailAddressPopup(findEmailNodeFromPopupNode(document.popupNode, 'emailAddressPopup')); goUpdateCommand('cmd_createFilterFromPopup');"
 		onpopuphiding="hideEmailNewsPopup(findEmailNodeFromPopupNode(document.popupNode, 'emailAddressPopup'));">
-			<menuseparator id="scanmail-menuseparator" hidden="true"/>
-			<menuitem id="scanmail-emailAddressPopup" label="&scanmail.getqrcode.label;" hidden="true"
+			<menuseparator id="scanmail-menuseparator" />
+			<menuitem id="scanmail-emailAddressPopup" label="&scanmail.getqrcode.label;"
 			oncommand="window.openDialog('chrome://scanmail/content/scanmail.xul', '', '', findEmailNodeFromPopupNode(document.popupNode, 'emailAddressPopup').getAttribute('emailAddress'))"/>
 		</popup>
 	</overlay>

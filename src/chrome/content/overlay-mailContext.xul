@@ -10,6 +10,6 @@ Scan'Mail
   <script type="application/x-javascript" src="overlay-mailContext.js"/>
     <popup id="mailContext">
     <menuseparator id="scanmail-menuseparator" hidden="true"/>
-    <menuitem id="scanmail-messagePaneContext" hidden="true" label="&scanmail.getqrcode.label;" oncommand="getQRCode();"/>
+    <menuitem id="scanmail-messagePaneContext" hidden="true" label="&scanmail.getqrcode.label;" oncommand="Scanmail.displayQRCode();"/>
   </popup>
 </overlay>
