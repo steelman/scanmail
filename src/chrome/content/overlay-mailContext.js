@@ -57,7 +57,7 @@ function getQRCode() {
 	else if(isTextSelected()) {
 		var _content = content.window.getSelection();
 	}
-	window.openDialog('chrome://scanmail/content/qrcode.xul', '', '', _content);
+	window.openDialog('chrome://scanmail/content/scanmail.xul', '', '', _content);
 }
 
 window.addEventListener("DOMContentLoaded",function(e) {linkEvent();}, false);
