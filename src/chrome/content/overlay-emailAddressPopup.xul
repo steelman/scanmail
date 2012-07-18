@@ -13,7 +13,7 @@ Scan'Mail
 		onpopuphiding="hideEmailNewsPopup(findEmailNodeFromPopupNode(document.popupNode, 'emailAddressPopup'));">
 			<menuseparator id="scanmail-menuseparator" hidden="true"/>
 			<menuitem id="scanmail-emailAddressPopup" label="&scanmail.getqrcode.label;" hidden="true"
-			oncommand="window.openDialog('chrome://scanmail/content/qrcode.xul', '', '', findEmailNodeFromPopupNode(document.popupNode, 'emailAddressPopup').getAttribute('emailAddress'))"/>
+			oncommand="window.openDialog('chrome://scanmail/content/scanmail.xul', '', '', findEmailNodeFromPopupNode(document.popupNode, 'emailAddressPopup').getAttribute('emailAddress'))"/>
 		</popup>
 	</overlay>
 	
