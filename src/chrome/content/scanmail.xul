@@ -8,8 +8,7 @@ Scan'Mail
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://scanmail/content/scanmail.css" type="text/css"?>
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml" 
-sizemode="normal" title="Scan'Mail" id="scanmail" pack="center" width="200" height="280" 
-onload="Scanmail.displayQRCode(window.arguments[0].toString());">
+sizemode="normal" title="Scan'Mail" id="scanmail" pack="center" onload="Scanmail.displayQRCode(window.arguments[0].toString());">
 	<script type="application/javascript" src="chrome://scanmail/content/qrcode.js" />
 	<script type="application/javascript" src="chrome://scanmail/content/scanmail.js" />
 	<html:div id="qrcode" name="qrcode">
