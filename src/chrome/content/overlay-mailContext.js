@@ -65,6 +65,6 @@ var Scanmail = new function() {
 		else if(isTextSelected()) {
 			var content = window.content.getSelection();
 		}
-		window.openDialog('chrome://scanmail/content/scanmail.xul', '', '', content);
+		window.openDialog('chrome://scanmail/content/scanmail.xul', '', 'chrome=yes,resizable=no,dialog=no,centerscreen=yes,alwaysRaised=yes', content);
 	};
 };
