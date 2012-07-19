@@ -6,7 +6,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>scanmail@nassim.kacha</em:id>
     <em:name>Scan'Mail</em:name>
-    <em:version>2.0.0</em:version>
+    <em:version>2.1.0</em:version>
     <em:type>2</em:type>
     <em:creator>Nassim KACHA</em:creator>
     <em:description>QR Code generator allows easy transfer of information to mobile phones.</em:description>

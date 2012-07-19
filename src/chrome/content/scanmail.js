@@ -12,12 +12,17 @@ var Scanmail = new function() {
 	 * @param options	associative array
 	 * @returns 
 	 */
-	var qrCode = function(options){
+	var qrCode = function(options)
+	{
 			var qrcode	= new QRCode(options.typeNumber, options.correctLevel);
 			qrcode.addData(options.text);
 			qrcode.make();
 
-			var canvas = document.createElementNS ("http://www.w3.org/1999/xhtml", "canvas");
+			// Check if a canvas is not already displayed
+			var canvas = document.getElementById('canvas');
+			if (canvas == null) {
+				canvas = document.createElementNS ("http://www.w3.org/1999/xhtml", "canvas");
+			}
 			canvas.id = 'canvas';
 			canvas.className = 'canvas';
 			canvas.width	= options.width;
@@ -114,5 +119,49 @@ var Scanmail = new function() {
 		var clipid = Components.interfaces.nsIClipboard;
 		var clip   = Components.classes["@mozilla.org/widget/clipboard;1"].getService(clipid);
 		clip.setData(trans, null, clipid.kGlobalClipboard);
+	};
+	
+	
+	/**
+	 * Displays a postal address as a geo-coordinates
+	 */
+	this.getGeoCoordinates = function(content)
+	{
+		var jsonResponse = null;
+		var apikey = 'AIzaSyALbTK_ijFFAUTNiKDdrgIeXlkbfCPqs7M';
+		var query = content.replace(/[\n]/gi, " ");
+		var url = encodeURI('https://maps.googleapis.com/maps/api/place/textsearch/json?query='+query+'&sensor=false&key='+apikey);
+		var req = new XMLHttpRequest;
+		req.open('GET', url, false);
+		req.onreadystatechange = function () {
+			if (req.readyState == 4 && req.status == 200){
+				  jsonResponse = JSON.parse(req.responseText);
+			}
+		};
+		req.send(null);
+		switch(jsonResponse.status) {
+			case 'ZERO_RESULTS':
+				// Google API can't localize the given postal address
+				alert('Address not found !');
+				break;
+			case 'OVER_QUERY_LIMIT':
+				// Currently with a FREE account the quota is limited to 1000 requests/day
+				alert('Google API : quota exceeded !');
+				break;
+			case 'REQUEST_DENIED':
+				// should never appear for a user but useful for debugging
+				alert('Google API : request denied !');
+				break;
+			case 'INVALID_REQUEST':
+				// should never appear for a user but useful for debugging
+				alert('Google API : Invalid request !');
+				break;
+			default:
+				var lat = jsonResponse.results[0].geometry.location.lat;
+				var lng = jsonResponse.results[0].geometry.location.lng;
+				var tag = 'geo:' + lat + ',' + lng;
+				this.displayQRCode(tag);
+				break;
+		}
 	};
 };

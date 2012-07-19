@@ -15,6 +15,7 @@ sizemode="normal" title="Scan'Mail" id="scanmail" pack="center" onload="Scanmail
 	</html:div>
 	<html:div style="text-align: center;">
 		<html:img class="button" src="chrome://scanmail/content/img/clipboard.png" onclick="Scanmail.copyToClipboard();"></html:img>
+		<html:img class="button" src="chrome://scanmail/content/img/tag.png" onclick="Scanmail.getGeoCoordinates(window.arguments[0].toString());"></html:img>
 	</html:div>
 </window>
 

@@ -1,9 +1,11 @@
 #scanmail {
     width: 200px;
-    height: 265px;
+    height: 270px;
 }
 
 .button {
+    width: 60px;
+    height: 60px;
     opacity:0.6;
     filter:alpha(opacity=60); /* IE Compatibility */
 }
