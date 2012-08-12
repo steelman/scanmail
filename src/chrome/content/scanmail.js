@@ -142,7 +142,10 @@ var Scanmail = new function() {
 		switch(jsonResponse.status) {
 			case 'ZERO_RESULTS':
 				// Google API can't localize the given postal address
-				alert('Address not found !');
+//				alert('Address not found !');
+				var bundle = document.getElementById("scanmail-stringbundle");
+				var message = bundle.getString('aaa');
+				alert(message);
 				break;
 			case 'OVER_QUERY_LIMIT':
 				// Currently with a FREE account the quota is limited to 1000 requests/day
