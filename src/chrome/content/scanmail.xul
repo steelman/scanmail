@@ -5,6 +5,7 @@ Scan'Mail
 @author : Nassim KACHA <nassim.kacha@blueicefield.com>
 @license : LICENSE MIT
 --> 
+<!DOCTYPE overlay SYSTEM "chrome://scanmail/locale/scanmail.dtd">
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://scanmail/content/scanmail.css" type="text/css"?>
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml" 
@@ -17,9 +18,8 @@ sizemode="normal" title="Scan'Mail" id="scanmail" pack="center" onload="Scanmail
 	<html:div id="qrcode" name="qrcode">
 	</html:div>
 	<html:div style="text-align: center;">
-		<button tooltiptext="Copy to clipboard" image="chrome://scanmail/content/img/clipboard.png" onclick="Scanmail.copyToClipboard();"></button>
-		<!-- <html:img class="button" src="chrome://scanmail/content/img/clipboard.png" onclick="Scanmail.copyToClipboard();"></html:img> -->
-		<button tooltiptext="Get as geo-coordinates" image="chrome://scanmail/content/img/tag.png" onclick="Scanmail.getGeoCoordinates(window.arguments[0].toString());"></button>
+		<button tooltiptext="&scanmail.copytoclipboard.label;" image="chrome://scanmail/content/img/clipboard.png" onclick="Scanmail.copyToClipboard();"></button>
+		<button tooltiptext="&scanmail.getasgeocoordinates.label;" image="chrome://scanmail/content/img/tag.png" onclick="Scanmail.getGeoCoordinates(window.arguments[0].toString());"></button>
 	</html:div>
 </window>
 

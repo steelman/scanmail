@@ -10,18 +10,19 @@ Scan'Mail
 <prefwindow
      title="Scan'Mail preferences" 
      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-	<prefpane label="Encodage preferences">
+	<prefpane>
 		<preferences>
-			<preference id="utf8-encoding" name="extensions.scanmail.utf8-encoding" type="bool"/>
+			<preference id="google-places-api-key" name="extensions.scanmail.google-places-api-key" type="string"/>
 			<preference id="mailto-protocol" name="extensions.scanmail.mailto-protocol" type="bool"/>
 		</preferences>
 		<groupbox>
-			<caption label="&scanmail.encoding.label;"/>
-			<checkbox id="utf8" label="&scanmail.utf8-encoding.label;" preference="utf8-encoding"/>
+			<caption label="&scanmail.google-places-api-key.label;"/>
+			<textbox id="checkbox-google-places-api-key" preference="google-places-api-key"/>
+			<label value="More informations" class="text-link" href="http://github.com/blueicefield/scanmail"/>
 		</groupbox>
 		<groupbox>
 			<caption label="&scanmail.protocols.label;"/>
-			<checkbox id="mailto" label="&scanmail.mailto-protocol.label;" preference="mailto-protocol"/>
+			<checkbox id="checkbox-mailto" label="&scanmail.mailto-protocol.label;" preference="mailto-protocol"/>
 		</groupbox>
 	</prefpane>
 </prefwindow>

@@ -1,6 +1,9 @@
 # Builded XPI archive 
 scanmail.xpi
 
+# Google API keyfile
+api.key
+
 # Eclipse project files
 .project
 .settings

@@ -1,19 +1,9 @@
-#scanmail {
+/*#scanmail {
     width: 204px;
-    height: 280px;
+    height: 200px;
 }
-
+*/
 #qrcode {
-    margin: 2px;
+    margin: 3px; /* prevent the qr code to be attached to the window borders */
     text-align: center;
-}
-
-.button {
-    width: 50px;
-    height: 50px;
-    opacity:0.6;
-}
-
-.button:hover {
-    opacity:1.0;
 }

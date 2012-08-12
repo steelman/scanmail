@@ -68,7 +68,8 @@ var Scanmail = new function() {
 	{
 		var prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 		var use_mailto = prefManager.getBoolPref("extensions.scanmail.mailto-protocol");
-		return {'use_mailto': use_mailto};
+		var google_places_api_key = prefManager.getCharPref("extensions.scanmail.google-places-api-key");
+		return {'use_mailto': use_mailto, 'google_places_api_key': google_places_api_key};
 	};
 
 	
@@ -127,8 +128,15 @@ var Scanmail = new function() {
 	 */
 	this.getGeoCoordinates = function(content)
 	{
+		var bundle = document.getElementById("scanmail-stringbundle");
+		var settings = getSettings();
+		if(settings.google_places_api_key == "") {
+			var message = bundle.getString('googleApiNoKey');
+			alert(message);
+			return false; // Exit directly if no Google Places API key is configured
+		}
 		var jsonResponse = null;
-		var apikey = 'AIzaSyALbTK_ijFFAUTNiKDdrgIeXlkbfCPqs7M';
+		var apikey = settings.google_places_api_key;
 		var query = content.replace(/[\n]/gi, " ");
 		var url = encodeURI('https://maps.googleapis.com/maps/api/place/textsearch/json?query='+query+'&sensor=false&key='+apikey);
 		var req = new XMLHttpRequest;
@@ -142,22 +150,23 @@ var Scanmail = new function() {
 		switch(jsonResponse.status) {
 			case 'ZERO_RESULTS':
 				// Google API can't localize the given postal address
-//				alert('Address not found !');
-				var bundle = document.getElementById("scanmail-stringbundle");
-				var message = bundle.getString('aaa');
+				var message = bundle.getString('googleApiZeroResults');
 				alert(message);
 				break;
 			case 'OVER_QUERY_LIMIT':
 				// Currently with a FREE account the quota is limited to 1000 requests/day
-				alert('Google API : quota exceeded !');
+				var message = bundle.getString('googleApiQuotaExceeded');
+				alert(message);
 				break;
 			case 'REQUEST_DENIED':
-				// should never appear for a user but useful for debugging
-				alert('Google API : request denied !');
+				// May occur if the Google API key is incorrect
+				var message = bundle.getString('googleApiRequestDenied');
+				alert(message);
 				break;
 			case 'INVALID_REQUEST':
-				// should never appear for a user but useful for debugging
-				alert('Google API : Invalid request !');
+				// Should never appear for a user but useful for debugging
+				var message = bundle.getString('googleApiInvalidRequest');
+				alert(message);
 				break;
 			default:
 				var lat = jsonResponse.results[0].geometry.location.lat;

@@ -47,7 +47,7 @@ var Scanmail = new function() {
 			menu.addEventListener("popupshowing",function(e) {show();}, false);
 		}
 	};
-
+	
 	/**
 	 * Displays the QR Code window passing it the selection content
 	 */

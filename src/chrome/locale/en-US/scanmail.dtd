@@ -1,5 +1,7 @@
 <!ENTITY scanmail.getqrcode.label "Get QR code">
-<!ENTITY scanmail.encoding.label "Encoding">
-<!ENTITY scanmail.utf8-encoding.label "Use UTF-8 encoding">
+<!ENTITY scanmail.google-places-api-key.label "Google Places API key">
 <!ENTITY scanmail.protocols.label "Protocols">
 <!ENTITY scanmail.mailto-protocol.label "Enable 'mailto' protocol support">
+<!ENTITY scanmail.copytoclipboard.label "Copy to clipboard">
+<!ENTITY scanmail.getasgeocoordinates.label "Get as geo-coordinates">
+
