@@ -7,3 +7,5 @@ locale scanmail it-IT  chrome/locale/it-IT/
 
 overlay		chrome://messenger/content/messenger.xul	chrome://scanmail/content/overlay-mailContext.xul
 overlay		chrome://messenger/content/messenger.xul	chrome://scanmail/content/overlay-emailAddressPopup.xul
+overlay		chrome://messenger/content/messageWindow.xul	chrome://scanmail/content/overlay-mailContext.xul
+overlay		chrome://messenger/content/messageWindow.xul	chrome://scanmail/content/overlay-emailAddressPopup.xul
