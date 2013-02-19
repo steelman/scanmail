@@ -80,8 +80,7 @@ var Scanmail = new function() {
 	{
 		var prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 		var use_mailto = prefManager.getBoolPref("extensions.scanmail.mailto-protocol");
-		var google_places_api_key = prefManager.getCharPref("extensions.scanmail.google-places-api-key");
-		return {'use_mailto': use_mailto, 'google_places_api_key': google_places_api_key};
+		return {'use_mailto': use_mailto};
 	};
 
 	
