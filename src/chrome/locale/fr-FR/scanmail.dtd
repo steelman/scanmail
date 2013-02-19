@@ -1,9 +1,7 @@
 <!ENTITY scanmail.getqrcode.label "Obtenir le QR code">
-<!ENTITY scanmail.google-places-api-key.label "Google Places API key">
 <!ENTITY scanmail.protocols.label "Protocoles">
 <!ENTITY scanmail.mailto-protocol.label "Activer le support du protocole 'mailto'">
 <!ENTITY scanmail.error-too-long-text.label "Désolé, l'opération est limitée à 500 caractères maximum !">
 <!ENTITY scanmail.copytoclipboard.label "Copier dans le presse-papier">
-<!ENTITY scanmail.getasgeocoordinates.label "Obtenir sous forme de géo-coordonnées">
 
 

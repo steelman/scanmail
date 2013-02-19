@@ -18,8 +18,7 @@ sizemode="normal" title="Scan'Mail" id="scanmail" pack="center" onload="Scanmail
 	<html:div id="qrcode" name="qrcode">
 	</html:div>
 	<html:div style="text-align: center;">
-		<button tooltiptext="&scanmail.copytoclipboard.label;" image="chrome://scanmail/content/img/clipboard.png" onclick="Scanmail.copyToClipboard();"></button>
-		<button tooltiptext="&scanmail.getasgeocoordinates.label;" image="chrome://scanmail/content/img/tag.png" onclick="Scanmail.getGeoCoordinates(window.arguments[0].toString());"></button>
+		<button id="copybutton" tooltiptext="&scanmail.copytoclipboard.label;" image="chrome://scanmail/content/img/clipboard.png" onclick="Scanmail.copyToClipboard();"></button>
 	</html:div>
 </window>
 

@@ -58,6 +58,18 @@ var Scanmail = new function() {
 		var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
 		return regex.test(string);
 	}; 
+
+
+	/**
+	 * Checks if the string passed as parameter is a phone number
+	 * @param string
+	 * @returns true if the given parameter is a phone number
+	 */
+	var isPhoneNumer = function(string)
+	{
+		var regex = /^[0-9().-\/]*$/;
+		return regex.test(strip(string));
+	};
 	
 	
 	/**
@@ -119,61 +131,6 @@ var Scanmail = new function() {
 
 		var clipid = Components.interfaces.nsIClipboard;
 		var clip   = Components.classes["@mozilla.org/widget/clipboard;1"].getService(clipid);
-		clip.setData(trans, null, clipid.kGlobalClipboard);
-	};
-	
-	
-	/**
-	 * Displays a postal address as a geo-coordinates
-	 */
-	this.getGeoCoordinates = function(content)
-	{
-		var bundle = document.getElementById("scanmail-stringbundle");
-		var settings = getSettings();
-		if(settings.google_places_api_key == "") {
-			var message = bundle.getString('googleApiNoKey');
-			alert(message);
-			return false; // Exit directly if no Google Places API key is configured
-		}
-		var jsonResponse = null;
-		var apikey = settings.google_places_api_key;
-		var query = content.replace(/[\n]/gi, " ");
-		var url = encodeURI('https://maps.googleapis.com/maps/api/place/textsearch/json?query='+query+'&sensor=false&key='+apikey);
-		var req = new XMLHttpRequest;
-		req.open('GET', url, false);
-		req.onreadystatechange = function () {
-			if (req.readyState == 4 && req.status == 200){
-				  jsonResponse = JSON.parse(req.responseText);
-			}
-		};
-		req.send(null);
-		switch(jsonResponse.status) {
-			case 'ZERO_RESULTS':
-				// Google API can't localize the given postal address
-				var message = bundle.getString('googleApiZeroResults');
-				alert(message);
-				break;
-			case 'OVER_QUERY_LIMIT':
-				// Currently with a FREE account the quota is limited to 1000 requests/day
-				var message = bundle.getString('googleApiQuotaExceeded');
-				alert(message);
-				break;
-			case 'REQUEST_DENIED':
-				// May occur if the Google API key is incorrect
-				var message = bundle.getString('googleApiRequestDenied');
-				alert(message);
-				break;
-			case 'INVALID_REQUEST':
-				// Should never appear for a user but useful for debugging
-				var message = bundle.getString('googleApiInvalidRequest');
-				alert(message);
-				break;
-			default:
-				var lat = jsonResponse.results[0].geometry.location.lat;
-				var lng = jsonResponse.results[0].geometry.location.lng;
-				var tag = 'geo:' + lat + ',' + lng;
-				this.displayQRCode(tag);
-				break;
-		}
+		clip.setData(trans, null, clipid.kGlobalClipboard);	
 	};
 };
