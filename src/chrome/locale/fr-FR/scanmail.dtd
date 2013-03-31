@@ -3,5 +3,6 @@
 <!ENTITY scanmail.mailto-protocol.label "Activer le support du protocole 'mailto'">
 <!ENTITY scanmail.error-too-long-text.label "Désolé, l'opération est limitée à 500 caractères maximum !">
 <!ENTITY scanmail.copytoclipboard.label "Copier dans le presse-papier">
+<!ENTITY scanmail.error-correction.label "Niveau de correction d'erreur">
 
 

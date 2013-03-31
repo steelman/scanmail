@@ -2,5 +2,5 @@
 <!ENTITY scanmail.protocols.label "Protocolli">
 <!ENTITY scanmail.mailto-protocol.label "Attivare il protocollo 'mailto'">
 <!ENTITY scanmail.copytoclipboard.label "Copia nella clipboard">
-
+<!ENTITY scanmail.error-correction.label "Errore di correzione del livello">
 

@@ -80,7 +80,11 @@ var Scanmail = new function() {
 	{
 		var prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 		var use_mailto = prefManager.getBoolPref("extensions.scanmail.mailto-protocol");
-		return {'use_mailto': use_mailto};
+		var correctLevels = { 'L': QRErrorCorrectLevel.L,
+							  'M': QRErrorCorrectLevel.M,
+							  'Q': QRErrorCorrectLevel.H,
+							  'H': QRErrorCorrectLevel.H };
+		return {'use_mailto': use_mailto, 'correctLevel': correctLevels[prefManager.getCharPref("extensions.scanmail.error-correction")]};
 	};
 
 	
@@ -91,17 +95,19 @@ var Scanmail = new function() {
 	this.displayQRCode = function(content)
 	{
 		var settings = getSettings();
+
 		if(settings.use_mailto && isEmailAddress(content))
 		{
 			content = 'mailto:'+content;
 		}
+
 		var canvas = qrCode({ width: 200,
 				 			  height: 200,
-				 			  typeNumber	: -1,
-				 			  correctLevel : QRErrorCorrectLevel.H,
-				 			  background : "#ffffff",
-				 			  foreground : "#000000",
-				 			  text : content });
+				 			  typeNumber: -1,
+				 			  correctLevel: settings.correctLevel,
+				 			  background: "#ffffff",
+				 			  foreground: "#000000",
+				 			  text: content });
 		document.getElementById('qrcode').insertBefore(canvas, null);
 	};
 	

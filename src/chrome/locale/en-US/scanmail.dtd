@@ -2,4 +2,4 @@
 <!ENTITY scanmail.protocols.label "Protocols">
 <!ENTITY scanmail.mailto-protocol.label "Enable 'mailto' protocol support">
 <!ENTITY scanmail.copytoclipboard.label "Copy to clipboard">
-
+<!ENTITY scanmail.error-correction.label "Error correction level">
