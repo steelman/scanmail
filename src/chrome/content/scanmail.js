@@ -25,22 +25,28 @@ var Scanmail = new function() {
 			}
 			canvas.id = 'canvas';
 			canvas.className = 'canvas';
-			canvas.width	= options.width;
-			canvas.height	= options.height;
-			
-			var ctx = canvas.getContext('2d');
-			
+
 			// compute tileW/tileH based on options.width/options.height
-			var tileW	= options.width  / qrcode.getModuleCount();
-			var tileH	= options.height / qrcode.getModuleCount();
+			// 8 = 2 * 4 modules of quite zone
+			var tileW = Math.floor(options.width  / (qrcode.getModuleCount() + 8));
+			var tileH = Math.floor(options.height / (qrcode.getModuleCount() + 8));
+
+			/* Do not let modules be too small. */
+			if (tileW < 3) { tileW = 3; }
+			if (tileH < 3) { tileH = 3; }
+
+			canvas.width  = tileW * (qrcode.getModuleCount() + 8)
+			canvas.height = tileH * (qrcode.getModuleCount() + 8)
+
+			var ctx = canvas.getContext('2d');
+			ctx.fillStyle = options.background;
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 			// draw in the canvas
 			for( var row = 0; row < qrcode.getModuleCount(); row++ ){
 				for( var col = 0; col < qrcode.getModuleCount(); col++ ){
 					ctx.fillStyle = qrcode.isDark(row, col) ? options.foreground : options.background;
-					var w = (Math.ceil((col+1)*tileW) - Math.floor(col*tileW));
-					var h = (Math.ceil((row+1)*tileW) - Math.floor(row*tileW));
-					ctx.fillRect(Math.round(col*tileW),Math.round(row*tileH), w, h);  
+					ctx.fillRect(Math.round((4+col)*tileW),Math.round((4+row)*tileH), tileW, tileH);  
 				}	
 			}
 			// return just built canvas
